@@ -17,6 +17,9 @@ Flask 2.0.1
 To configure the Flask web application, complete the following steps:
 
 Step 1: Install the dependencies
+
 Step 2: Copy the /stream-testing-platform folder
+
 Step 3: Modify creds.py with API key
+
 Step 4: Execute the flask app (flask run)
