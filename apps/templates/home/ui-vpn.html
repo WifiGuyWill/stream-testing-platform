@@ -1,0 +1,153 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">AP Provisioning Complete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          <i class="tim-icons icon-simple-remove"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        Happy Streaming &#128250;
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header">
+        <h4 class="card-title"> Aruba Tester Equipment Provisioning</h4>
+        <p class="category"> Please select the region from the dropdown for each SSID and Port, then click submit</p>
+      </div>
+      <h5 class="card-title"></h5>
+      <div class="card-body">
+        <form action="" method="POST">
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <h5 class="card-title">
+                  Tester: <input type="hidden" name="username" value="{{ current_user.username }}">{{ current_user.username }}<br>
+                  Hostname: <input type="hidden" name="hostname" value="{{ current_user.hostname }}">{{ current_user.hostname }}<br>
+                  Serial: <input type="hidden" name="serial" id="serial" value="{{ current_user.serial }}">{{ current_user.serial }}<br>
+                  Mac-Address: <input type="hidden" name="mac" value="{{ current_user.mac }}">{{ current_user.mac }}<br>
+                  IP Address: <input type="hidden" name="ip" value="{{ current_user.ip }}">{{ current_user.ip }}<br>
+                </h5>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div> 
+            <div class="row">
+            <div class="col">
+              SSID: VPN-1
+                <select class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" title="VPN" name="PBR_1" id="PBR_1">
+                  {% for device in devices %}
+                  <option value="{{ device.ipsec }}" {% if device == PBR_1 %} selected="selected" {% endif %}>
+                    {{device.vgwname}}
+                  {% endfor %}
+                </select>
+            </div>
+            <div class="col">
+              Port: #1
+              <select class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" title="VPN" name="PBR_WIRED_1" id="PBR_WIRED_1">
+                  {% for device in devices %}
+                  <option value="{{ device.ipsec }}" {% if device == PBR_WIRED_1 %} selected="selected" {% endif %}>
+                    {{ device.vgwname }}
+                  {% endfor %}
+                </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              SSID: VPN-2
+              <select class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" title="VPN" name="PBR_2" id="PBR_2">
+                  {% for device in devices %}
+                  <option value="{{ device.ipsec }}" {% if device == PBR_2 %} selected="selected" {% endif %}>
+                    {{ device.vgwname }}
+                  {% endfor %}
+                </select>
+              </div>
+            <div class="col">
+              Port: #2
+              <select class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" title="VPN" name="PBR_WIRED_2" id="PBR_WIRED_2">
+                  {% for device in devices %}
+                  <option value="{{ device.ipsec }}" {% if device == PBR_WIRED_2 %} selected="selected" {% endif %}>
+                    {{ device.vgwname }}
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                SSID: VPN-3
+                <select class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" title="VPN" name="PBR_3" id="PBR_3">
+                  {% for device in devices %}
+                  <option value="{{ device.ipsec }}" {% if device == PBR_3 %} selected="selected" {% endif %}>
+                    {{ device.vgwname }}
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col">
+              Port: #3
+              <select class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" title="VPN" name="PBR_WIRED_3" id="PBR_WIRED_3">
+                  {% for device in devices %}
+                  <option value="{{ device.ipsec }}" {% if device == PBR_WIRED_3 %} selected="selected" {% endif %}>
+                    {{ device.vgwname }}
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                SSID: VPN-4
+                <select class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" title="VPN" name="PBR_4" id="PBR_4">
+                  {% for device in devices %}
+                  <option value="{{ device.ipsec }}" {% if device == PBR_4 %} selected="selected" {% endif %}>
+                    {{ device.vgwname }}
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col">
+              Port: #4
+              <select class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" title="VPN" name="PBR_WIRED_4" id="PBR_WIRED_4">
+                  {% for device in devices %}
+                  <option value="{{ device.ipsec }}" {% if device == PBR_WIRED_4 %} selected="selected" {% endif %}>
+                    {{ device.vgwname }}
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+              <div class="row">
+                <div class="col">
+                <p><input type = "submit" value = "Submit" class="btn btn-fill btn-primary" data-toggle="modal" data-target="#exampleModal" style="float: right;"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                </div>
+              </div>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

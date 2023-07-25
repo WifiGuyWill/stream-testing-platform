@@ -1,0 +1,208 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Register {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <form role="form" method="post" action="">
+      <div class="card-header">
+        <h4 class="card-title"> List of Users</h4>
+      <h6 class="card-category">
+        {% if msg %}
+          <span class="text-danger">{{ msg | safe }}</span>
+        {% else %}
+        {% endif %}  
+    </h6>
+  </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+              <tr>
+                <th>
+                  ID
+                </th>
+                <th>
+                  Ussername
+                </th>
+                <th>
+                  Email
+                </th>
+                <th>
+                  Serial
+                </th>
+                <th>
+                  MAC Address
+                </th>
+                <th>
+                  Hostname
+                </th>
+                <th>
+                  VPN IP
+                </th>
+                <th>
+                  DELETE
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for user in users %}
+              <tr>
+                <td>
+                  {{ user.id }}
+                </td>
+                <td>
+                  {{ user.username }}
+                </td>
+                <td>
+                  {{ user.email }}
+                </td>
+                <td>
+                  {{ user.serial }}
+                </td>
+                <td>
+                  {{ user.mac }}
+                </td>
+                <td>
+                  {{ user.hostname }}
+                </td>
+                <td>
+                  {{ user.ip }}
+                </td>
+                <td>
+                  <input type="checkbox" id="id" name="id" value="{{user.id}}" />
+                </td>
+              </tr>
+              {% endfor %}
+              <tr>
+                <td>
+                  <label>PASSWORD</label>
+                  <input class="form-control" id="pwd_create" name="password" type="password" value="">
+                </td>
+                <td>
+                  <label>USERNAME</label>
+                  <input class="form-control" id="username_create" name="username" type="text" value="">
+                </td>
+                <td>
+                  <label>EMAIL</label>
+                  <input class="form-control" id="email_create" name="email" type="email" value="">
+                </td>
+                <td>
+                  <label>SERIAL</label>
+                  <input class="form-control" id="serial_create" name="serial" type="text" value="">
+                </td>
+                <td>
+                  <label>MAC ADDRESS</label>
+                  <input class="form-control" id="mac_create" name="mac" type="text" value="">
+                </td>
+                <td>
+                  <label>HOSTNAME</label>
+                  <input class="form-control" id="hostname_create" name="hostname" type="text" value="">
+                </td>
+                <td>
+                  <label>VPN IP</label>
+                  <input class="form-control" id="ip_create" name="ip" type="text" value="">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-right">
+            <button type="submit" name="user-submit" class="btn btn-fill btn-primary">ADD NEW USER</button>
+            <button type="submit" name="user-delete" class="btn btn-fill btn-primary">DELETE SELECTED</button>
+          </div>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="card ">
+      <form role="form" method="post" action="">
+      <div class="card-header">
+        <h4 class="card-title"> List of Gateways</h4>
+        <h6 class="card-category">
+          {% if gwmsg %}
+            <span class="text-danger">{{ gwmsg | safe }}</span>
+          {% else %}
+          {% endif %}  
+      </h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+              <tr>
+                <th>
+                  ID
+                </th>
+                <th>
+                  Gateway Name
+                </th>
+                <th>
+                  Region
+                </th>
+                <th>
+                  IPSec
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for device in devices %}
+              <tr>
+                <td>
+                  {{ device.id }}
+                </td>
+                <td>
+                  {{ device.vgwname }}
+                </td>
+                <td>
+                  {{ device.region }}
+                </td>
+                <td>
+                  {{ device.ipsec }}
+                </td>
+                <td>
+                  <input type="checkbox" id="device_id" name="device_id" value="{{ device.id }}" />
+                </td>
+              </tr>
+              {% endfor %}
+              <tr>
+                <td>
+                  <label></label>
+                </td>
+                <td>
+                  <label>GATEWAY NAME</label>
+                  <input class="form-control" id="vgwname_create" name="vgwname" type="text" value="">
+                </td>
+                <td>
+                  <label>REGION</label>
+                  <input class="form-control" id="region_create" name="region" type="text" value="">
+                </td>
+                <td>
+                  <label>IPSEC</label>
+                  <input class="form-control" id="ipsec_create" name="ipsec" type="text" value="">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+            <div class="text-right">
+              <button type="submit" name="gateway-submit" class="btn btn-fill btn-primary">ADD NEW GATEWAY</button>
+              <button type="submit" name="gateway-delete" class="btn btn-fill btn-primary">DELETE SELECTED</button>
+            </div>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

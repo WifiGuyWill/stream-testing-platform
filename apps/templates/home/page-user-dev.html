@@ -1,0 +1,79 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Page User {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <form role="form" method="post" action="">
+      <div class="card-header">
+        <h5 class="title">Edit Profile</h5>
+      </div>
+      <div class="card-body">
+          <div class="row">
+            <div class="col-md-2 pr-md-1">
+              <div class="form-group">
+                <label>UserID</label>
+                <input type="text" class="form-control" id="id" name="id" value="{{ current_user.id }}">
+              </div>
+            </div>
+            <div class="col-md-4 px-md-1">
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username_create" id="username_create"value="{{ current_user.username }}">
+              </div>
+            </div>
+            <div class="col-md-6 pl-md-1">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" name="email_create" id="email_create"value="{{ current_user.email }}">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label>AP Serial</label>
+                <input type="text" class="form-control" name="serial_create" id="serial_create" placeholder="AP Serial Number" value="{{ current_user.serial }}">
+              </div>
+            </div>
+            <div class="col-md-6 pl-md-1">
+              <div class="form-group">
+                <label>AP MAC Addres</label>
+                <input type="text" class="form-control" name="mac_create" id="mac_create" placeholder="AP MAC Addres" value="{{ current_user.mac }}">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label>AP Hostname</label>
+                <input type="text" class="form-control" name="hostname_create" id="hostname_create" placeholder="AP Hostname" value="{{ current_user.hostname }}">
+              </div>
+            </div>
+            <div class="col-md-6 pl-md-1">
+              <div class="form-group">
+                <label>VPN IP Address</label>
+                <input type="text" class="form-control" name="ip_create" id="ip_create" placeholder="VPN IP Address" value="{{ current_user.ip }}">
+              </div>
+            </div>
+          </div>
+      </div>
+            <div class="card-footer">
+              <button type="submit" name="update" class="btn btn-fill btn-primary">Save</button>
+            </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

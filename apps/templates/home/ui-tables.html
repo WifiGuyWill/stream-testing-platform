@@ -1,0 +1,128 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header">
+        <h4 class="card-title"> List of Users</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+              <tr>
+                <th>
+                  ID
+                </th>
+                <th>
+                  Ussername
+                </th>
+                <th>
+                  Email
+                </th>
+                <th>
+                  Serial
+                </th>
+                <th>
+                  Mac-Address
+                </th>
+                <th>
+                  Hostname
+                </th>
+                <th>
+                  VPN IP
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for user in users %}
+              <tr>
+                <td>
+                  {{ user.id }}
+                </td>
+                <td>
+                  {{ user.username }}
+                </td>
+                <td>
+                  {{ user.email }}
+                </td>
+                <td>
+                  {{ user.serial }}
+                </td>
+                <td>
+                  {{ user.mac }}
+                </td>
+                <td>
+                  {{ user.hostname }}
+                </td>
+                <td>
+                  {{ user.ip }}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header">
+        <h4 class="card-title"> List of Gateways</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+              <tr>
+                <th>
+                  ID
+                </th>
+                <th>
+                  Gateway Name
+                </th>
+                <th>
+                  Region
+                </th>
+                <th>
+                  IPSec
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for device in devices %}
+              <tr>
+                <td>
+                  {{ device.id }}
+                </td>
+                <td>
+                  {{ device.vgwname }}
+                </td>
+                <td>
+                  {{ device.region }}
+                </td>
+                <td>
+                  {{ device.ipsec }}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
